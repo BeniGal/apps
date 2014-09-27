@@ -1,4 +1,4 @@
-//document.addEventListener("deviceready", initCanvas, false);
+document.addEventListener("deviceready", illust, false);
 window.onload = illust();
 
 function illust() {
