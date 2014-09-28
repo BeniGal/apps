@@ -15,7 +15,7 @@ function OCanvas(id) {
 
 		this.vectors.g = new OVector(
 			new OPoint(100, 100, this.ctx),
-			0.1,
+			0.05,
 			Math.PI * 3/2,
 			'#0D0', 2, 1,
 			this.ctx

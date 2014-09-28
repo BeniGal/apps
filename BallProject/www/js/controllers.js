@@ -5,8 +5,12 @@ function OControllers(canvas)
 		if (!this.canvas.started) {
 
 			this.canvas.started = 1;
-			document.getElementById('start').disabled = 'disabled';
-			document.getElementById('pause').removeAttribute('disabled');
+
+			$('#start').attr('disabled', true);
+			$('#start').parent().addClass('ui-state-disabled');
+			$('#pause').attr('disabled', false);
+			$('#pause').parent().removeClass('ui-state-disabled');
+
 			this.canvas.work();
 
 		}
@@ -15,13 +19,17 @@ function OControllers(canvas)
 	this.pause = function() {
 
 		if ( (this.canvas.paused =- this.canvas.paused) < 0) {
-			
-			document.getElementById('pause').value='Pause';
+
+			/*$('#pause').val('Pause');
+			alert('Pause'+$('#pause').parent().html())
+			$('#pause').parent().html('Pause'+$('#pause').parent().html().substring(8));*/
 			this.canvas.work();
 
-		} else {
-			document.getElementById('pause').value='Continue';
-		}
+		}/* else {
+			$('#pause').val('Continue');
+			str = 'Continue' + $('#pause').parent().html().substring(5);
+			$('#pause').parent().html(str);
+		}*/
 	};
 
 	this.reset = function() {
@@ -29,9 +37,11 @@ function OControllers(canvas)
 		this.canvas.started = 0;
 		this.canvas.paused = -1;
 
-		document.getElementById('pause').value='Pause';
-		document.getElementById('pause').disabled='disabled';
-		document.getElementById('start').removeAttribute('disabled');
+		$('#pause').val('Pause') 
+		$('#pause').attr('disabled', true);
+		$('#pause').parent().addClass('ui-state-disabled');
+		$('#start').attr('disabled', false);
+		$('#start').parent().removeClass('ui-state-disabled');
 
 		this.canvas.init();
 
